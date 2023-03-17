@@ -2,8 +2,7 @@ import React, { useEffect } from "react";
 import Dates from "./date";
 import Input from "./input";
 import Button from "./button";
-import image1 from "./image0.png";
-import image2 from "./image1.png";
+
 import { useState } from "react";
 export default function App() {
   
