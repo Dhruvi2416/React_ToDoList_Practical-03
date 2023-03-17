@@ -6,6 +6,8 @@ import image1 from "./image0.png";
 import image2 from "./image1.png";
 import { useState } from "react";
 export default function App() {
+  
+  // Date stored in localStorage and is checked so that one can get new empty list on another day
   useEffect(() => {
     const todayDate = new Date();
 
@@ -13,8 +15,9 @@ export default function App() {
     if (dateInLocalStorage == null) {
       localStorage.setItem("date", todayDate);
     } else {
+      //converted Date in string to object as todayDate is object and hence have to compare object with object
       const dateObject = new Date(dateInLocalStorage);
-
+//date comparision
       if (
         dateObject.getFullYear() <= todayDate.getFullYear() &&
         dateObject.getMonth() <= todayDate.getMonth() &&
@@ -28,7 +31,7 @@ export default function App() {
       }
     }
   });
-
+// list store for a day and if started first at render than will initialize with empty array 
   const [items, setItems] = useState(
     JSON.parse(localStorage.getItem("itemList")) !== null
       ? JSON.parse(localStorage.getItem("itemList"))
@@ -36,11 +39,11 @@ export default function App() {
   );
 
   const [shouldDisplay, setShouldDisplay] = useState(false);
-
+//set should siplay true for input field on clicking button
   function handleClick() {
     setShouldDisplay(true);
   }
-
+// enter key submission
   function handleEnterKey(newTask) {
     setShouldDisplay(false);
     setItems([...items, newTask]);
@@ -52,24 +55,24 @@ export default function App() {
       alert("Task Added sucessfully");
     });
   }
-
+// escape key
   function handleEscapeKey() {
     setShouldDisplay(false);
   }
-
+// storing the value of checkbox done or undone
   const [isComplete, setIsComplete] = useState(
     JSON.parse(localStorage.getItem("doneList")) !== null
       ? JSON.parse(localStorage.getItem("doneList"))
       : []
   );
+  
+  // setting event of checkbox in array
   function handleCheck(event, i) {
     const array = [...isComplete];
-    console.log(event);
     array[i] = event.target.checked;
     setIsComplete(array);
     localStorage.setItem("doneList", JSON.stringify(array));
-    console.log("dhruvi");
-  }
+    }
 
   return (
     <>
@@ -93,7 +96,7 @@ export default function App() {
                     <div className="round">
                       <input
                         type="checkbox"
-                        id={`checkbox${i}`}
+                        id={`checkbox${i}`} { /* index to access particular checkbox */}
                         checked={isComplete[i] == true ? true : false}
                         onChange={(event) => {
                           handleCheck(event, i);
