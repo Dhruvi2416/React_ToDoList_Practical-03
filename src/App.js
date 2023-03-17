@@ -96,13 +96,14 @@ export default function App() {
                     <div className="round">
                       <input
                         type="checkbox"
-                        id={`checkbox${i}`} { /* index to access particular checkbox */}
+                        id={`checkbox${i}`}
+                        // index to access particular checkbox 
                         checked={isComplete[i] == true ? true : false}
                         onChange={(event) => {
                           handleCheck(event, i);
                         }}
                       />
-                      <label htmlFor={`checkbox${i}`}></label>;
+                      <label htmlFor={`checkbox${i}`}></label>
                     </div>
                   </div>
                 );
