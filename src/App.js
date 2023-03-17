@@ -15,18 +15,16 @@ export default function App() {
     } else {
       const dateObject = new Date(dateInLocalStorage);
 
-      console.log(dateObject.getDate());
-
       if (
         dateObject.getFullYear() <= todayDate.getFullYear() &&
         dateObject.getMonth() <= todayDate.getMonth() &&
         dateObject.getDate() < todayDate.getDate()
       ) {
-        localStorage.setItem("imageList", JSON.stringify([]));
+        localStorage.setItem("doneList", JSON.stringify([]));
         localStorage.setItem("itemList", JSON.stringify([]));
         localStorage.setItem("date", todayDate);
         setItems([]);
-        setImages([]);
+        setIsComplete([]);
       }
     }
   });
@@ -46,9 +44,9 @@ export default function App() {
   function handleEnterKey(newTask) {
     setShouldDisplay(false);
     setItems([...items, newTask]);
-    setImages([...images, false]);
+    setIsComplete([...isComplete, false]);
     localStorage.setItem("itemList", JSON.stringify([...items, newTask]));
-    localStorage.setItem("imageList", JSON.stringify([...images, false]));
+    localStorage.setItem("doneList", JSON.stringify([...isComplete, false]));
 
     setTimeout(() => {
       alert("Task Added sucessfully");
@@ -59,16 +57,18 @@ export default function App() {
     setShouldDisplay(false);
   }
 
-  const [images, setImages] = useState(
-    JSON.parse(localStorage.getItem("imageList")) !== null
-      ? JSON.parse(localStorage.getItem("imageList"))
+  const [isComplete, setIsComplete] = useState(
+    JSON.parse(localStorage.getItem("doneList")) !== null
+      ? JSON.parse(localStorage.getItem("doneList"))
       : []
   );
-  function handleImage(i) {
-    const array = [...images];
-    array[i] = true;
-    setImages(array);
-    localStorage.setItem("imageList", JSON.stringify(array));
+  function handleCheck(event, i) {
+    const array = [...isComplete];
+    console.log(event);
+    array[i] = event.target.checked;
+    setIsComplete(array);
+    localStorage.setItem("doneList", JSON.stringify(array));
+    console.log("dhruvi");
   }
 
   return (
@@ -80,37 +80,26 @@ export default function App() {
             <ul>
               {items.map((itemvalue, i) => {
                 return (
-                  <div className="list d-flex">
+                  <div className="list d-flex" key={i}>
                     <div className="task-write">
                       <h4
                         className={
-                          images[i] == true ? "complete" : "incomplete"
+                          isComplete[i] == true ? "complete" : "incomplete"
                         }
                       >
-                        <li key={i}>{itemvalue}</li>
+                        <li>{itemvalue}</li>
                       </h4>
                     </div>
-                    <div className="image">
-                      {images[i] ? (
-                        <img src={image2} alt="img2" />
-                      ) : (
-                        <img
-                          src={image1}
-                          alt="img1"
-                          onClick={() => handleImage(i)}
-                        />
-                      )}
-
-                      {/* {image ? (
-                        <img
-                          src="image2.png"
-                          alt="img1"
-                          onClick={handleImage}
-                          key={i}
-                        />
-                      ) : (
-                        <img src="./image1.png" alt="img2" />
-                      )} */}
+                    <div className="round">
+                      <input
+                        type="checkbox"
+                        id={`checkbox${i}`}
+                        checked={isComplete[i] == true ? true : false}
+                        onChange={(event) => {
+                          handleCheck(event, i);
+                        }}
+                      />
+                      <label htmlFor={`checkbox${i}`}></label>;
                     </div>
                   </div>
                 );
