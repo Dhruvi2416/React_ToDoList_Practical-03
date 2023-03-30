@@ -19,6 +19,6 @@ The list items created on a day is available all the time, for the same day, and
 
 ![image](https://user-images.githubusercontent.com/122339608/225884909-50d52f30-5690-4e17-807d-5dbd5d6c4e2a.png)
 
-LocalStorage
+## LocalStorage
 
 ![image](https://user-images.githubusercontent.com/122339608/225885243-eb230412-e2e8-42f9-8733-cd17ab8e61e8.png)
