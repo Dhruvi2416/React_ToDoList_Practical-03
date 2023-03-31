@@ -24,19 +24,27 @@ If you simply want to access ToDoList please go through this link https://try1-f
 
 1. Install the Firebase CLI if you haven’t already by running **npm install -g firebase-tools**.
 2. Sign up for a Firebase account and create a new project.
-3. Run firebase login and login with your previous created Firebase account.
+3. Run **firebase login** and login with your previous created Firebase account.
 
-4. Then run the firebase init command from your project’s root.
-5. You need to choose the Hosting: Configure and deploy Firebase Hosting sites and choose the Firebase project you created in the previous step.
-6. You will need to agree with database.rules.json being created, choose build as the public directory, and also agree to Configure as a single-page app by replying with **y**.
+4. Then run the **firebase init** command from your project’s root.
+5. You need to choose the **Hosting: Configure and deploy Firebase Hosting sites and choose the Firebase project you created in the previous step.**
+6. You will need to agree with **database.rules.json** being created, choose build as the public directory, and also agree to Configure as a single-page app by replying with **y**.
 
-Now, in firebase.json add
-"hosting":
-...
-"headers": [
-{"source": "/service-worker.js", "headers": [{"key": "Cache-Control", "value": "no-cache"}]}
-]
-... 7. Now, after you create a production build with npm run build, you can deploy it by running firebase deploy.
+                Now, in firebase.json add
+
+                "hosting":{
+
+                ...{
+
+                "headers": [
+
+                {"source": "/service-worker.js", "headers": [{"key": "Cache-Control", "value": "no-cache"}]}
+
+                ]
+
+                ... 
+
+7. Now, after you create a production build with npm run build, you can deploy it by running firebase deploy.
 
 ## Screenshot:
 
