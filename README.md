@@ -1,3 +1,4 @@
+
 # ToDoList
 When a user clicks on the + button, a text input at the end of the list can be editable, and hide the + button.
 Once text input is visible, If the user types and presses enter key, a new item is added to the end of the list.
@@ -22,3 +23,7 @@ The list items created on a day is available all the time, for the same day, and
 ## LocalStorage
 
 ![image](https://user-images.githubusercontent.com/122339608/225885243-eb230412-e2e8-42f9-8733-cd17ab8e61e8.png)
+
+
+
+
