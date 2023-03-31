@@ -17,10 +17,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "static-server": "npm run-script build && serve build",
-    "development": "env-cmd -f .env.development npm run static-server",
-    "stagging": "env-cmd -f .env.stagging npm run static-server",
-    "production": "env-cmd -f .env.production npm run static-server"
+   
   },
   "eslintConfig": {
     "extends": [
