@@ -18,33 +18,38 @@ The list items created on a day is available all the time, for the same day, and
 
 ## Hosting:
 
-If you simply want to access ToDoList please go through this link https://try1-f0dab.web.app/ which is hosted on firebase.
+If you simply want to access ToDoList please go through this link https://dhruvi2416.github.io/React_ToDoList_Practical-03/ which is hosted on gh-page.
 
-## Steps of hosting on Firebase:
+## Steps of hosting on gh-pages:
+1. Open your package.json and add a homepage field for your project:
 
-1. Install the Firebase CLI if you haven’t already by running **npm install -g firebase-tools**.
-2. Sign up for a Firebase account and create a new project.
-3. Run **firebase login** and login with your previous created Firebase account.
+     "homepage": "https://myusername.github.io/my-app",
+2.  Install gh-pages and add deploy to scripts in package.json 
 
-4. Then run the **firebase init** command from your project’s root.
-5. You need to choose the **Hosting: Configure and deploy Firebase Hosting sites and choose the Firebase project you created in the previous step.**
-6. You will need to agree with **database.rules.json** being created, choose build as the public directory, and also agree to Configure as a single-page app by replying with **y**.
+      npm install --save gh-pages
 
-                Now, in firebase.json add
+3.  Add the following scripts in your package.json:
 
-                "hosting":{
+    "scripts": {
++   **"predeploy": "npm run build",**
++   **"deploy": "gh-pages -d build",**
 
-                ...{
+    "start": "react-scripts start",
 
-                "headers": [
+    "build": "react-scripts build",
 
-                {"source": "/service-worker.js", "headers": [{"key": "Cache-Control", "value": "no-cache"}]}
+      **Note:** If you want to push it on **master** please wite **"deploy":
+ "gh-pages -b master -d build",** 
+instead of  **"deploy": "gh-pages -d build",**
 
-                ]
+4. **npm run deploy**
 
-                ... 
+5. Finally, make sure GitHub Pages option in your GitHub project settings is set to use the **gh-pages** branch:
 
-7. Now, after you create a production build with npm run build, you can deploy it by running firebase deploy.
+![image](https://user-images.githubusercontent.com/122339608/229298461-655e0a84-de6e-456e-8b10-0e607fbca00f.png)
+
+6. You can get your link from repo's --> settings --> Pages 
+
 
 ## Screenshot:
 
